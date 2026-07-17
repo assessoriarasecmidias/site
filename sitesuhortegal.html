@@ -464,6 +464,12 @@
         .about {
             background: white;
             padding: 7rem 0;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4rem;
             display: grid;
             grid-template-columns: 1fr 1.2fr;
             gap: 5rem;
@@ -670,6 +676,11 @@
             }
 
             .about {
+                padding: 5rem 0;
+            }
+
+            .about-container {
+                padding: 0 3rem;
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
@@ -725,12 +736,67 @@
             }
 
             .about {
+                padding: 3.5rem 0;
+            }
+
+            .about-container {
+                padding: 0 1.5rem;
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .about-image {
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
+                aspect-ratio: 1;
+            }
+
+            .about-content {
+                padding: 0;
+                width: 100%;
+            }
+
+            .about-content h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .about-content .section-kicker {
+                margin-bottom: 1rem;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+                color: #666;
+                margin-bottom: 1.3rem;
+                line-height: 1.85;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
             }
 
             .about-stats {
                 flex-direction: column;
                 gap: 2rem;
+                margin-top: 2rem;
+                padding-top: 2rem;
+                border-top: 1px solid #e0dbd5;
+            }
+
+            .stat {
+                width: 100%;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+                letter-spacing: 1px;
             }
 
             .problem, .solution, .services, .portfolio, .about, .testimonials {
@@ -784,6 +850,19 @@
             .stat-number {
                 font-size: 2rem;
             }
+
+            .about-container {
+                padding: 0 1.5rem;
+                gap: 2rem;
+            }
+
+            .about-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .about-content p {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -796,7 +875,7 @@
             <p class="hero-subtitle">Especialista em gestação, parto e primeiros momentos. Memórias que você vai guardar para a vida toda.</p>
             
             <div class="cta-group">
-                <a href="https://wa.me/55989921351?text=Oi%2C%20Su.%20Vim%20pelo%20seu%20site%20e%20quero%20um%20or%C3%A7amento." class="btn btn-primary" target="_blank">Agendar Sessão</a>
+                <a href="https://wa.me/5598921352192?text=Oi%2C%20Su.%20Vim%20pelo%20seu%20site%20e%20quero%20um%20or%C3%A7amento." class="btn btn-primary" target="_blank">Agendar Sessão</a>
             </div>
 
             <div class="hero-trust">
@@ -939,24 +1018,26 @@
 
     <!-- SOBRE -->
     <section class="about" id="sobre">
-        <div class="about-image">
-            <img src="https://raw.githubusercontent.com/assessoriarasecmidias/lp-assets/refs/heads/main/suhortegalfotografia-foto-de-perfil.jpg" alt="Su Hortegal">
-        </div>
-        <div class="about-content">
-            <span class="section-kicker">Sobre</span>
-            <h2>Conheça Quem Estará ao Seu Lado</h2>
-            <p>Sou fotógrafa profissional especializada em ciclos de vida. Há mais de 10 anos capturo os momentos mais íntimos: o primeiro choro de um bebê, a barriguinha de uma gestante, o olhar de uma mãe conhecendo seu filho.</p>
-            <p>Não sou só fotógrafa. Sou uma testemunha dos seus momentos mais preciosos. Trabalho com sensibilidade, profissionalismo e um coração aberto para honrar cada fase da sua jornada.</p>
-            <p>Minhas fotos não são só bonitas. São memórias que você vai guardar para a vida toda.</p>
-            
-            <div class="about-stats">
-                <div class="stat">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Anos de experiência</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-label">Sessões realizadas</div>
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://raw.githubusercontent.com/assessoriarasecmidias/lp-assets/refs/heads/main/suhortegalfotografia-foto-de-perfil.jpg" alt="Su Hortegal">
+            </div>
+            <div class="about-content">
+                <span class="section-kicker">Sobre</span>
+                <h2>Conheça Quem Estará ao Seu Lado</h2>
+                <p>Sou fotógrafa profissional especializada em ciclos de vida. Há mais de 10 anos capturo os momentos mais íntimos: o primeiro choro de um bebê, a barriguinha de uma gestante, o olhar de uma mãe conhecendo seu filho.</p>
+                <p>Não sou só fotógrafa. Sou uma testemunha dos seus momentos mais preciosos. Trabalho com sensibilidade, profissionalismo e um coração aberto para honrar cada fase da sua jornada.</p>
+                <p>Minhas fotos não são só bonitas. São memórias que você vai guardar para a vida toda.</p>
+                
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Anos de experiência</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Sessões realizadas</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -998,13 +1079,13 @@
     <section class="cta-final">
         <h2>Pronto para Eternizar Seus Momentos?</h2>
         <p>Vamos conversar sobre como posso capturar a emoção e a beleza da sua história.</p>
-        <a href="https://wa.me/55989921351?text=Oi%2C%20Su.%20Vim%20pelo%20seu%20site%20e%20quero%20um%20or%C3%A7amento." class="btn btn-primary" target="_blank">Agendar Sessão</a>
+        <a href="https://wa.me/5598921352192?text=Oi%2C%20Su.%20Vim%20pelo%20seu%20site%20e%20quero%20um%20or%C3%A7amento." class="btn btn-primary" target="_blank">Agendar Sessão</a>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2024 Su Hortegal Fotografia</p>
-        <p>São Luís, Maranhão | WhatsApp: (55) 9 8992-1351</p>
+        <p>São Luís, Maranhão | WhatsApp: (55) 9 8921-3519</p>
     </footer>
 
     <script>

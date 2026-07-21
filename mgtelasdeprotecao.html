@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MG Telas - Redes de Proteção com Segurança Garantida | 5 Anos de Experiência</title>
+    <meta name="description" content="Redes de proteção para sua família com 5 anos de experiência. 500+ clientes satisfeitos. Garantia de 5 anos. Solicite seu orçamento agora!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header e Navegação */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #e74c3c;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e74c3c;
+        }
+
+        .whatsapp-header {
+            background: #25d366;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .whatsapp-header:hover {
+            background: #1da855;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23333" width="1200" height="600"/><g fill="%23444"><rect x="50" y="50" width="200" height="150"/><rect x="300" y="80" width="200" height="180"/><rect x="600" y="40" width="200" height="200"/><rect x="900" y="100" width="200" height="160"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 10rem 2rem 6rem;
+            margin-top: 60px;
+            text-align: center;
+            color: white;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: #e74c3c;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(231, 76, 60, 0.2);
+            border: 2px solid #e74c3c;
+            color: #fff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #f5f5f5;
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Serviços */
+        .services {
+            padding: 4rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.15);
+        }
+
+        .service-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .service-card a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .service-card a:hover {
+            color: #c0392b;
+        }
+
+        /* Diferenciais */
+        .differentials {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .differentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .diff-item {
+            text-align: center;
+        }
+
+        .diff-item h4 {
+            color: #e74c3c;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .diff-item p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #e74c3c;
+        }
+
+        .testimonial-text {
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .stars {
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-final p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 8rem 1rem 4rem;
+                margin-top: 120px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card, .testimonial, .diff-item {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">MG <span>Telas</span></a>
+        <nav>
+            <ul>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#differentials">Por que nós</a></li>
+                <li><a href="#testimonials">Depoimentos</a></li>
+                <li><a href="https://api.whatsapp.com/send?phone=5534996484036" class="whatsapp-header">📞 Orçamento</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="badge">✓ Garantia de 5 Anos</div>
+        <h1>Proteção para sua <span class="highlight">família</span> é com segurança</h1>
+        <p>Redes de proteção instaladas em mais de 500 casas. Confiança comprovada com 5 anos de experiência no mercado.</p>
+        <div class="cta-buttons">
+            <a href="https://api.whatsapp.com/send?phone=5534996484036&text=Oi! Gostaria de um orçamento para minha proteção." class="btn btn-primary">🎯 QUERO MEU ORÇAMENTO</a>
+            <a href="#services" class="btn btn-secondary">Conhecer Serviços</a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>5+</h3>
+            <p>Anos no Mercado</p>
+        </div>
+        <div class="stat-item">
+            <h3>500+</h3>
+            <p>Clientes Satisfeitos</p>
+        </div>
+        <div class="stat-item">
+            <h3>20K+</h3>
+            <p>Redes Instaladas</p>
+        </div>
+        <div class="stat-item">
+            <h3>470K+</h3>
+            <p>M² Protegidos</p>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="services" class="services">
+        <h2 class="section-title">Nossas Soluções de Proteção</h2>
+        <p class="section-subtitle">Proteção completa para toda sua família em qualquer ambiente</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🏠 Sacadas & Varandas</h3>
+                <p>Proteção robusta para as áreas externas da sua casa. Segurança máxima para crianças e animais de estimação.</p>
+                <a href="https://api.whatsapp.com/send?phone=5534996484036&text=Solicito orçamento para Sacadas/Varandas">Solicitar Orçamento →</a>
+            </div>
+            <div class="service-card">
+                <h3>🪟 Janelas & Basculantes</h3>
+                <p>Redes de alta resistência em polietileno. Materiais testados e aprovados pelo INMETRO.</p>
+                <a href="https://api.whatsapp.com/send?phone=5534996484036&text=Solicito orçamento para Janelas/Basculantes">Solicitar Orçamento →</a>
+            </div>
+            <div class="service-card">
+                <h3>🏊 Piscinas</h3>
+                <p>Suporta até 500kg/m² na vertical. Proteção contra afogamentos e acidentes aquáticos.</p>
+                <a href="https://api.whatsapp.com/send?phone=5534996484036&text=Solicito orçamento para Piscinas">Solicitar Orçamento →</a>
+            </div>
+            <div class="service-card">
+                <h3>⬆️ Escadas & Mezaninos</h3>
+                <p>Segurança para os pequenos. Prevenção de quedas em ambientes internos.</p>
+                <a href="https://api.whatsapp.com/send?phone=5534996484036&text=Solicito orçamento para Escadas/Mezaninos">Solicitar Orçamento →</a>
+            </div>
+            <div class="service-card">
+                <h3>🔧 Manutenção & Revisão</h3>
+                <p>Serviço especializado para garantir o bom funcionamento contínuo das suas redes.</p>
+                <a href="https://api.whatsapp.com/send?phone=5534996484036&text=Solicito serviço de manutenção">Solicitar Orçamento →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section id="differentials" class="differentials">
+        <h2 class="section-title">Por que Escolher a MG Telas</h2>
+        <p class="section-subtitle">Qualidade e excelência em cada detalhe</p>
+        <div class="differentials-grid">
+            <div class="diff-item">
+                <h4>👥 Atendimento Premium</h4>
+                <p>Equipe dedicada pronta para atender suas necessidades com profissionalismo e transparência.</p>
+            </div>
+            <div class="diff-item">
+                <h4>⭐ Especialistas</h4>
+                <p>Profissionais treinados com pontualidade, honestidade e comprometimento total.</p>
+            </div>
+            <div class="diff-item">
+                <h4>🎨 Personalização</h4>
+                <p>Disponível em cores: preto, palha e areia. Adaptamos a seu gosto e ambiente.</p>
+            </div>
+            <div class="diff-item">
+                <h4>✅ Qualidade Garantida</h4>
+                <p>Materiais de primeira linha aprovados pelo INMETRO. Durabilidade comprovada.</p>
+            </div>
+            <div class="diff-item">
+                <h4>📋 Normas ABNT</h4>
+                <p>Seguimos rigorosamente a NBR 14718. Segurança em primeiro lugar, sempre.</p>
+            </div>
+            <div class="diff-item">
+                <h4>🛡️ Garantia 5 Anos</h4>
+                <p>Confiança total na qualidade do nosso trabalho. Proteção estendida para sua família.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">O que Nossos Clientes Dizem</h2>
+        <p class="section-subtitle">Mais de 6 mil clientes satisfeitos com nossa qualidade</p>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Não pense duas vezes em colocar a rede de proteção. Tenho dois gatinhos e durmo muito mais tranquilo com a MG Telas protegendo minha sacada."</p>
+                <p class="testimonial-author">- Beatriz Alves</p>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"A MG Telas resolveu todos os meus problemas! Segurança é fundamental para minha família. Recomendo muito, equipe de primeira qualidade!"</p>
+                <p class="testimonial-author">- Gustavo Martins</p>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Se você quer mais liberdade para seu animalzinho e tranquilidade para você, a rede de proteção é a solução. Muito satisfeita com o resultado!"</p>
+                <p class="testimonial-author">- Ana Maria Nascimento</p>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Contratei a MG Telas para meu gatil. O atendimento foi impecável, profissionalismo de ponta. Voltaria a contratar com certeza!"</p>
+                <p class="testimonial-author">- Ana Silveira</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <h2>Não Deixe Para Depois!</h2>
+        <p>Sua família merece proteção. Solicite seu orçamento agora mesmo e ganhe consultoria gratuita.</p>
+        <a href="https://api.whatsapp.com/send?phone=5534996484036&text=Oi! Gostaria de solicitar um orçamento para proteção com a MG Telas." class="btn btn-secondary">💬 Falar no WhatsApp</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 MG Telas de Proteção. Todos os direitos reservados. | Qualidade e Segurança em Primeiro Lugar</p>
+    </footer>
+
+    <script>
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Efeito ao scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -12,6 +12,10 @@
     <meta property="og:description" content="Recupere o controle da sua saúde com acompanhamento nutricional baseado em ciência.">
     <meta property="og:type" content="website">
     
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -640,12 +644,94 @@
         .text-accent {
             color: var(--accent);
         }
+        
+        /* SCROLL TRIGGER + ANIMATIONS */
+        
+        /* Progress bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 999;
+            will-change: transform;
+        }
+        
+        /* Text reveal animation */
+        .reveal-text {
+            opacity: 0;
+        }
+        
+        /* Counter animation */
+        .counter {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Parallax layers */
+        .parallax-layer {
+            position: relative;
+        }
+        
+        /* Staggered animations */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        /* Hover effects */
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Glow effect on hover */
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .glow-hover:hover {
+            filter: drop-shadow(0 0 15px rgba(212, 165, 116, 0.4));
+        }
+        
+        /* Image hover zoom */
+        .image-hover-zoom {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .image-hover-zoom img {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .image-hover-zoom:hover img {
+            transform: scale(1.08);
+        }
+        
     </style>
 </head>
 <body>
 
 <!-- HERO -->
-<section class="hero" style="background-image: url('file:///mnt/user-data/uploads/Gemini_Generated_Image_5awd2s5awd2s5awd.png');">
+<section class="hero parallax-layer" style="background-image: url('file:///mnt/user-data/uploads/Gemini_Generated_Image_5awd2s5awd2s5awd.png');">
+    <div class="scroll-progress"></div>
     <div class="container">
         <h1>Recupere<br><span class="text-accent">o Controle</span><br>da Sua Saúde</h1>
         <p class="hero-subheadline">Sem mais efeito sanfona. Para quem já tentou de tudo e quer resultados que permanecem.</p>
@@ -669,32 +755,32 @@
         <div class="problems-title">Você<br>conhece<br><span class="text-accent">essas</span><br><span class="text-accent">situações?</span></div>
         
         <div class="problems-grid">
-            <div class="problem-card">
+            <div class="problem-card stagger-item hover-lift">
                 <h4>Efeito Sanfona</h4>
                 <p>Emagrece, depois volta tudo. Ou pior: volta mais. O ciclo se repete a cada tentativa.</p>
             </div>
             
-            <div class="problem-card">
+            <div class="problem-card stagger-item hover-lift">
                 <h4>Exames Alterados</h4>
                 <p>Colesterol, glicose, triglicerídeos sempre acima do esperado. Metabolismo descontrolado.</p>
             </div>
             
-            <div class="problem-card">
+            <div class="problem-card stagger-item hover-lift">
                 <h4>Cansaço Constante</h4>
                 <p>Dorme 8 horas mas acorda exaurida. Sem energia para nada. Esgotada mesmo descansando.</p>
             </div>
             
-            <div class="problem-card">
+            <div class="problem-card stagger-item hover-lift">
                 <h4>Compulsão Alimentar</h4>
                 <p>Come por ansiedade, estresse, tédio. Depois culpa e arrependimento. Ciclo interminável.</p>
             </div>
             
-            <div class="problem-card">
+            <div class="problem-card stagger-item hover-lift">
                 <h4>Inflamação no Corpo</h4>
                 <p>Inchaço, retenção, afeta peso e disposição. Sempre inchada independente do que faz.</p>
             </div>
             
-            <div class="problem-card">
+            <div class="problem-card stagger-item hover-lift">
                 <h4>Alterações Hormonais</h4>
                 <p>TPM forte, SOP, irregularidade menstrual afetando tudo. Desequilíbrio hormonal crônico.</p>
             </div>
@@ -765,9 +851,11 @@
 <section class="section">
     <div class="container">
         <div class="about">
-            <img src="file:///mnt/user-data/uploads/SaveClip_App_504654909_18117725410464041_4761860213842156844_n.jpg" alt="Dra. Tamiris Faria" class="about-image">
+            <div class="image-hover-zoom">
+                <img src="file:///mnt/user-data/uploads/SaveClip_App_504654909_18117725410464041_4761860213842156844_n.jpg" alt="Dra. Tamiris Faria" class="about-image">
+            </div>
             
-            <div class="about-text">
+            <div class="about-text hover-lift">
                 <h2>Sobre Mim</h2>
                 
                 <p>Meu trabalho começou exatamente onde também começou minha jornada: percebendo que dieta genérica não funciona. Cada pessoa tem uma história diferente com a comida, um metabolismo único, uma rotina específica.</p>
@@ -791,42 +879,42 @@
         <h2>Por Que Funciona<br><span class="text-accent">Diferente Aqui</span></h2>
         
         <div class="differentials-grid">
-            <div class="diff-card">
+            <div class="diff-card stagger-item hover-lift">
                 <h4>Plano Estratégico</h4>
                 <p>Cada refeição pensada para sua rotina, metabolismo e objetivos. Entregue no mesmo dia.</p>
             </div>
             
-            <div class="diff-card">
+            <div class="diff-card stagger-item hover-lift">
                 <h4>Ciência em Primeiro Lugar</h4>
                 <p>Cada recomendação baseada em evidências atualizadas. Nada de modismos.</p>
             </div>
             
-            <div class="diff-card">
+            <div class="diff-card stagger-item hover-lift">
                 <h4>Tecnologia Precisa</h4>
                 <p>Bioimpedância e scan 3D para acompanhar evolução real, não só peso.</p>
             </div>
             
-            <div class="diff-card">
+            <div class="diff-card stagger-item hover-lift">
                 <h4>Suporte Contínuo</h4>
                 <p>WhatsApp, app exclusivo. Você não é número. Seu progresso importa.</p>
             </div>
             
-            <div class="diff-card">
+            <div class="diff-card stagger-item hover-lift">
                 <h4>Interpretação de Exames</h4>
                 <p>Seus resultados analisados e explicados. Você entende o que significam.</p>
             </div>
             
-            <div class="diff-card">
+            <div class="diff-card stagger-item hover-lift">
                 <h4>Fitoterapia Baseada em Evidências</h4>
                 <p>Suplementação e fitoterápicos prescritos com segurança e propósito.</p>
             </div>
             
-            <div class="diff-card">
+            <div class="diff-card stagger-item hover-lift">
                 <h4>Comportamental Incluído</h4>
                 <p>Entendemos não só o que você come, mas por que come. Compulsão? Abordamos.</p>
             </div>
             
-            <div class="diff-card">
+            <div class="diff-card stagger-item hover-lift">
                 <h4>Acompanhamento Próximo</h4>
                 <p>Vagas limitadas. Seu progresso é acompanhado com detalhe e cuidado.</p>
             </div>
@@ -840,7 +928,7 @@
         <h2>Serviços &<br><span class="text-accent">Acompanhamento</span></h2>
         
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card stagger-item hover-lift">
                 <h3>Consulta Nutricional</h3>
                 <ul>
                     <li>Avaliação completa</li>
@@ -853,7 +941,7 @@
                 <a href="https://api.whatsapp.com/send?phone=5532991792233" class="btn btn-primary">Agendar</a>
             </div>
             
-            <div class="service-card featured">
+            <div class="service-card featured stagger-item hover-lift">
                 <h3>Programa de Acompanhamento<br><span style="font-size: 14px;">3-6 Meses</span></h3>
                 <ul>
                     <li>3 consultas estratégicas</li>
@@ -867,7 +955,7 @@
                 <a href="https://api.whatsapp.com/send?phone=5532991792233" class="btn btn-primary">Reservar Programa</a>
             </div>
             
-            <div class="service-card">
+            <div class="service-card stagger-item hover-lift">
                 <h3>Avaliação Metabólica</h3>
                 <ul>
                     <li>Bioimpedância</li>
@@ -879,7 +967,7 @@
                 <a href="https://api.whatsapp.com/send?phone=5532991792233" class="btn btn-primary">Agendar</a>
             </div>
             
-            <div class="service-card">
+            <div class="service-card stagger-item hover-lift">
                 <h3>Avaliação Comportamental</h3>
                 <ul>
                     <li>Entrevista comportamental</li>
@@ -1030,31 +1118,177 @@
 </footer>
 
 <script>
+    // Register ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // ========== PROGRESS BAR ==========
+    const progressBar = document.querySelector('.scroll-progress');
+    gsap.to(progressBar, {
+        scaleX: 1,
+        scrollTrigger: {
+            trigger: 'body',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 0.5,
+            markers: false
+        }
+    });
+    
+    // ========== PARALLAX HERO ==========
+    gsap.to('.hero', {
+        scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+            markers: false
+        },
+        y: 100,
+        opacity: 0.8,
+        ease: 'none'
+    });
+    
+    // ========== STAGGERED ANIMATIONS - Cards appear on scroll ==========
+    const staggerItems = gsap.utils.toArray('.stagger-item');
+    staggerItems.forEach((item, index) => {
+        gsap.to(item, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.1,
+            scrollTrigger: {
+                trigger: item,
+                start: 'top 80%',
+                end: 'top 50%',
+                scrub: false,
+                markers: false
+            },
+            ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+        });
+    });
+    
+    // ========== COUNTER ANIMATION - Google reviews count ==========
+    const counterElement = document.querySelector('.trust-item strong');
+    if (counterElement && counterElement.textContent.includes('5,055')) {
+        ScrollTrigger.create({
+            trigger: '.hero-trust',
+            onEnter: () => {
+                const counter = { value: 0 };
+                gsap.to(counter, {
+                    value: 5055,
+                    duration: 2.5,
+                    ease: 'power2.out',
+                    onUpdate: () => {
+                        const text = counterElement.parentElement;
+                        if (text) {
+                            text.innerHTML = '⭐ <strong>' + Math.floor(counter.value).toLocaleString() + '</strong> avaliações no Google • Média 5.0';
+                        }
+                    }
+                });
+            },
+            once: true
+        });
+    }
+    
+    // ========== TEXT REVEAL - Hero subheadline ==========
+    const heroSubheadline = document.querySelector('.hero-subheadline');
+    if (heroSubheadline) {
+        gsap.from(heroSubheadline, {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            delay: 0.3,
+            ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+        });
+    }
+    
+    // ========== FLOATING ANIMATION - Hero trust indicators ==========
+    gsap.to('.hero-trust', {
+        y: -15,
+        opacity: 0.95,
+        scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+            markers: false
+        },
+        ease: 'none'
+    });
+    
+    // ========== BUTTON HOVER RIPPLE EFFECT ==========
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('mouseenter', function(e) {
+            gsap.to(this, {
+                duration: 0.3,
+                boxShadow: '0 12px 28px rgba(45, 95, 79, 0.2)',
+                overwrite: 'auto'
+            });
+        });
+        
+        btn.addEventListener('mouseleave', function(e) {
+            gsap.to(this, {
+                duration: 0.3,
+                boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
+                overwrite: 'auto'
+            });
+        });
+    });
+    
+    // ========== ACCORDIONS ==========
     function toggleAccordion(header) {
         const content = header.nextElementSibling;
         const toggle = header.querySelector('.accordion-toggle');
         const isActive = content.classList.contains('active');
         
         document.querySelectorAll('.accordion-content.active').forEach(el => {
-            el.classList.remove('active');
+            gsap.to(el, {
+                height: 0,
+                opacity: 0,
+                duration: 0.3,
+                ease: 'power2.in',
+                onComplete: () => {
+                    el.classList.remove('active');
+                }
+            });
             el.previousElementSibling.querySelector('.accordion-toggle').textContent = '+';
         });
         
         if (!isActive) {
             content.classList.add('active');
+            gsap.fromTo(content, {
+                height: 0,
+                opacity: 0
+            }, {
+                height: 'auto',
+                opacity: 1,
+                duration: 0.3,
+                ease: 'power2.out'
+            });
             toggle.textContent = '−';
         }
     }
     
+    // ========== SMOOTH SCROLL LINKS ==========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href !== '#' && document.querySelector(href)) {
                 e.preventDefault();
-                document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                gsap.to(window, {
+                    duration: 0.8,
+                    scrollTo: href,
+                    ease: 'power2.inOut'
+                });
             }
         });
     });
+    
+    // ========== REFRESH SCROLL TRIGGER ON WINDOW RESIZE ==========
+    window.addEventListener('resize', () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.refresh());
+    });
+    
 </script>
 
 </body>

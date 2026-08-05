@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheila Martins - Transformação Física para Mulheres 30+</title>
+    <meta name="description" content="Especialista em emagrecimento e transformação física para mulheres 30+. Consultoria online, treinos personalizados e resultados reais.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 20, 147, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 206, 209, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 0%, rgba(255, 215, 0, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-bg-accent {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            display: none;
+        }
+
+        .hero-accent-1 {
+            top: 0;
+            right: 0;
+            width: 384px;
+            height: 384px;
+            background: #FF1493;
+        }
+
+        .hero-accent-2 {
+            bottom: 0;
+            left: 0;
+            width: 384px;
+            height: 384px;
+            background: #00CED1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 3rem 0 5rem 0;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                gap: 2rem;
+                padding: 2rem 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 2rem 0;
+            }
+        }
+
+        .hero-text h1 {
+            font-size: clamp(1.75rem, 5vw, 3.75rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 1.75rem;
+            }
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #ec4899;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 28rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero-text p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #ec4899;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #db2777;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: black;
+        }
+
+        .btn-white {
+            background: white;
+            color: #ec4899;
+        }
+
+        .btn-white:hover {
+            background: #f1f5f9;
+        }
+
+        .hero-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-top: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #cbd5e1;
+        }
+
+        .benefit-check {
+            font-weight: bold;
+            color: #ec4899;
+        }
+
+        .hero-image-placeholder {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero-image-placeholder {
+                border-radius: 1rem;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        .image-placeholder-content {
+            text-align: center;
+        }
+
+        .image-placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .image-placeholder-text {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .hero-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: #ec4899;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #ec4899;
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Transformações Section */
+        .transformacoes {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: #475569;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .transformacao {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .transformacao:nth-child(even) {
+            direction: rtl;
+        }
+
+        .transformacao:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .antes-depois {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .imagem-antes,
+        .imagem-depois {
+            flex: 1;
+            aspect-ratio: 1;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .imagem-antes {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            border: 2px solid #cbd5e1;
+        }
+
+        .imagem-depois {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 4px solid #00CED1;
+        }
+
+        .imagem-antes-alt {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            border: 4px solid #FFD700;
+        }
+
+        .seta-transformacao {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ec4899;
+            display: flex;
+            align-items: center;
+        }
+
+        .transformacao-texto h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .transformacao-resultado {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #ec4899;
+            margin-bottom: 1.5rem;
+        }
+
+        .transformacao-texto p {
+            color: #475569;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .transformacao-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1rem;
+            background: #f1f5f9;
+            border-radius: 0.5rem;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ec4899;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 0;
+            }
+
+            .transformacao {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .transformacao:nth-child(even) {
+                direction: ltr;
+            }
+
+            .transformacao:nth-child(even) > * {
+                direction: ltr;
+            }
+
+            .transformacao-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+        }
+
+        /* Como Funciona */
+        .como-funciona {
+            padding: 6rem 0;
+            background: #f8fafc;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: #ec4899;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .step-card p {
+            color: #64748b;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* Diferenciais */
+        .diferenciais {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .diferencial-card {
+            padding: 2rem;
+            border-radius: 0.75rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .diferencial-card-pink {
+            border: 2px solid #ec4899;
+            background: #fdf2f8;
+        }
+
+        .diferencial-card-gray {
+            border: 2px solid #e2e8f0;
+            background: #f8fafc;
+        }
+
+        .diferencial-icon {
+            flex-shrink: 0;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .diferencial-icon-pink {
+            background: #ec4899;
+            color: white;
+        }
+
+        .diferencial-icon-gray {
+            background: #1e293b;
+            color: white;
+        }
+
+        .diferencial-text h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .diferencial-text p {
+            color: #475569;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* Depoimentos */
+        .depoimentos {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #1e293b 0%, #000 100%);
+            color: white;
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .depoimento-card {
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .depoimento-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .depoimento-avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f472b6 0%, #ec0080 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .depoimento-info h4 {
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .depoimento-info p {
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .depoimento-card p {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .faq-item:hover {
+            border-color: #ec4899;
+        }
+
+        .faq-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: #000;
+            user-select: none;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 0;
+        }
+
+        .faq-item.open .faq-content {
+            max-height: 500px;
+            margin-top: 1rem;
+        }
+
+        .faq-content p {
+            color: #475569;
+            line-height: 1.7;
+            font-size: 0.875rem;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            padding: 6rem 1.5rem;
+            background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-final-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 24rem;
+            height: 24rem;
+            border-radius: 50%;
+            background: #00CED1;
+            opacity: 0.1;
+        }
+
+        .cta-final-content {
+            position: relative;
+            z-index: 10;
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .cta-final h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .cta-final p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-final .btn-white {
+            display: inline-block;
+            margin: 2rem 0;
+            padding: 1.25rem 3rem;
+            font-size: 1.125rem;
+        }
+
+        .cta-final-footer {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #94a3b8;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #94a3b8;
+        }
+
+        .footer-col a {
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: #ec4899;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg-accent hero-accent-1"></div>
+        <div class="hero-bg-accent hero-accent-2"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-label">Transformação Física para Mulheres 30+</span>
+                    <h1>Barriga, inchaço e falta de energia?</h1>
+                    <p>Emagreça, volte a ter disposição e recupere a confiança que merece. Sem enrolação, sem promessas falsas.</p>
+                    
+                    <div class="hero-ctas">
+                        <a href="https://wa.me/32988372723" class="btn btn-primary">Agende sua Avaliação</a>
+                        <a href="#transformacoes" class="btn btn-secondary">Conheça Meus Resultados ↓</a>
+                    </div>
+
+                    <div class="hero-benefits">
+                        <div class="benefit-item">
+                            <span class="benefit-check">✓</span> Consultoria online personalizada
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check">✓</span> Treinos focados em resultado
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-check">✓</span> Acompanhamento contínuo
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image-placeholder">
+                    <div class="hero-badge">2.690+ Seguidoras</div>
+                    <img src="sheila.jpg" alt="Sheila Martins - Personal Trainer" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+            <div class="scroll-indicator">↓</div>
+        </div>
+    </section>
+
+    <!-- TRANSFORMAÇÕES -->
+    <section class="transformacoes" id="transformacoes">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resultados reais de clientes reais</h2>
+                <p>Números que falam por si. Histórias que inspiram.</p>
+            </div>
+
+            <div class="transformacao">
+                <div class="antes-depois">
+                    <div class="imagem-antes">
+                        <img src="transformacao2.jpg" alt="Antes - 74kg para 64kg" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="seta-transformacao">→</div>
+                    <div class="imagem-depois">
+                        <img src="transformacao3.jpg" alt="Depois - 74kg para 58kg" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class="transformacao-texto">
+                    <h3>Transformação Real</h3>
+                    <p class="transformacao-resultado">De 74 kg para 58 kg - Perda de 16 kg</p>
+                    <p>Perda de peso é um número. <strong>Transformação é uma jornada.</strong></p>
+                    <p>Essa cliente não apenas perdeu 16 kg, mas ganhou energia, disposição e uma nova relação com o exercício. Ficou mais forte, mais confiante e mais feliz.</p>
+                    
+                    <div class="transformacao-stats">
+                        <div class="stat-box">
+                            <div class="stat-number">-16kg</div>
+                            <div class="stat-label">Peso Total</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Dedicação</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">↑↑</div>
+                            <div class="stat-label">Disposição</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transformacao" style="margin-top: 5rem;">
+                <div class="transformacao-texto">
+                    <h3>Outra Transformação Incrível</h3>
+                    <p class="transformacao-resultado">De 79 kg para 65 kg - Perda de 14 kg</p>
+                    <p>Cada cliente é uma história diferente. <strong>Cada transformação é uma vitória pessoal.</strong></p>
+                    <p>Essa cliente conquistou não apenas a perda de peso, mas ganhou autoestima, força e uma nova forma de se ver no espelho.</p>
+                    <p style="font-style: italic; color: #64748b; margin-top: 1rem;">"Ser personal é entender o lado do outro. Estamos aqui para cuidar e acolher, independentemente do ponto de partida."</p>
+                    
+                    <div class="transformacao-stats" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="stat-box">
+                            <div class="stat-number">-14kg</div>
+                            <div class="stat-label">Peso Total</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">★★★</div>
+                            <div class="stat-label">Satisfação</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="antes-depois">
+                    <div class="imagem-antes">
+                        <img src="transformacao1.jpg" alt="Antes - 74kg para 64kg" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="seta-transformacao">→</div>
+                    <div class="imagem-depois imagem-antes-alt">
+                        <img src="transformacao2.jpg" alt="Depois - 79kg para 65kg" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section class="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <h2>Como funciona</h2>
+                <p>Três passos simples para sua transformação</p>
+            </div>
+
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Avaliação Inicial</h3>
+                    <p>Conversamos sobre seus objetivos, limitações e rotina. Entendo você antes de qualquer coisa.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Plano Personalizado</h3>
+                    <p>Treino focado, orientação nutricional e estratégia adaptada para sua realidade.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Acompanhamento Contínuo</h3>
+                    <p>Ajustes semanais, suporte constante e celebração de cada conquista.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="diferenciais">
+        <div class="container">
+            <div class="section-header">
+                <h2>Por que escolher Sheila?</h2>
+                <p>Diferencial que faz resultado</p>
+            </div>
+
+            <div class="diferenciais-grid">
+                <div class="diferencial-card diferencial-card-pink">
+                    <div class="diferencial-icon diferencial-icon-pink">❤️</div>
+                    <div class="diferencial-text">
+                        <h3>Acolhimento Real</h3>
+                        <p>Não somos apenas números e exercícios. Entendo a jornada emocional e cuido de você como pessoa.</p>
+                    </div>
+                </div>
+
+                <div class="diferencial-card diferencial-card-gray">
+                    <div class="diferencial-icon diferencial-icon-gray">⚡</div>
+                    <div class="diferencial-text">
+                        <h3>Especialização em 30+</h3>
+                        <p>Seu corpo muda após os 30. Eu entendo essas mudanças e adapto tudo para você.</p>
+                    </div>
+                </div>
+
+                <div class="diferencial-card diferencial-card-gray">
+                    <div class="diferencial-icon diferencial-icon-gray">🛡️</div>
+                    <div class="diferencial-text">
+                        <h3>Resultados Comprovados</h3>
+                        <p>Não prometo milagres. Prometo dedicação, técnica correta e transformação real.</p>
+                    </div>
+                </div>
+
+                <div class="diferencial-card diferencial-card-pink">
+                    <div class="diferencial-icon diferencial-icon-pink">✨</div>
+                    <div class="diferencial-text">
+                        <h3>Consultoria Online</h3>
+                        <p>Onde quer que você esteja, estarei aqui. Flexibilidade total sem comprometer a qualidade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Histórias que Inspiram</h2>
+                <p>Ouça quem já transformou</p>
+            </div>
+
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">👤</div>
+                        <div class="depoimento-info">
+                            <h4>Mariana Santos</h4>
+                            <p>Transformação: 39kg → 45kg</p>
+                        </div>
+                    </div>
+                    <p>"Eu nunca imaginei que conseguiria ganhar massa muscular assim. A Sheila não apenas me treinou, ela acreditou em mim quando eu mesma não acreditava."</p>
+                </div>
+
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">👤</div>
+                        <div class="depoimento-info">
+                            <h4>Vaninha</h4>
+                            <p>Descobriu sua paixão pela musculação</p>
+                        </div>
+                    </div>
+                    <p>"Ela decidiu dar o primeiro passo comigo, e desde então encontrou na musculação uma paixão que transforma vidas. Hoje ela é mais confiante, mais forte e mais feliz."</p>
+                </div>
+
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">👥</div>
+                        <div class="depoimento-info">
+                            <h4>Comunidade de Clientes</h4>
+                            <p>100+ comentários positivos</p>
+                        </div>
+                    </div>
+                    <p>"A melhor! 👍👍👍" "Dessa aí não era fácil 💪" "Brabaaaaa tem momeeee 🔥" — Nossos clientes falam por si.</p>
+                </div>
+
+                <div class="depoimento-card">
+                    <div class="depoimento-header">
+                        <div class="depoimento-avatar">✨</div>
+                        <div class="depoimento-info">
+                            <h4>Transformação Real</h4>
+                            <p>Além do corpo, a mente</p>
+                        </div>
+                    </div>
+                    <p>"Transformar o suor em sorriso é a melhor terapia que existe. Cada cliente que sai diferente, com mais confiança e energia — esse é o meu propósito."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="faq-container">
+                <div class="section-header" style="margin-bottom: 3rem;">
+                    <h2>Dúvidas Frequentes</h2>
+                    <p>Respostas claras para você decidir com segurança</p>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-summary" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Como começo se nunca treinou?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>Começamos do zero, sem pressa. Adapto cada exercício para você, respeitando seu ritmo. Milhares de pessoas começaram do zero e chegaram onde estão hoje. Você também pode.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-summary" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Qual é o tempo real para ver resultados?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>Você sentirá energia e disposição em 2 a 3 semanas. Resultados visuais começam a aparecer entre 4 a 8 semanas, dependendo de sua dedicação. Transformação real leva tempo e consistência.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-summary" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Como funciona a consultoria online?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>Você recebe um plano personalizado com treinos, orientação nutricional e estratégia. Acompanhamento via WhatsApp e avaliações periódicas. Sem necessidade de estar em Juiz de Fora.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-summary" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Como manter o resultado após a consultoria?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>Te ensino tudo que você precisa saber. Você não fica dependente. Você sai sabendo treinar, se alimentar e entender seu corpo. Acompanhamento contínuo está disponível para quem quer evoluir mais.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-summary" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Qual é o custo da consultoria?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>Investimento varia conforme o pacote escolhido. Oferecemos opções para diferentes orçamentos. Agende sua avaliação — durante a conversa explicamos todas as possibilidades.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-summary" onclick="this.parentElement.classList.toggle('open')">
+                        <span>Preciso de cardápio específico?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>Sim, você recebe orientação nutricional adaptada à sua realidade. Não cremos em dietas rígidas. Ensinamos escolhas inteligentes que se encaixam na sua vida.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <div class="cta-final-bg"></div>
+        <div class="cta-final-content">
+            <h2>Pronta para sua transformação?</h2>
+            <p>Não é sobre perder peso. É sobre ganhar confiança, energia e uma nova versão de você.</p>
+            <a href="https://wa.me/32988372723" class="btn btn-white">Agende sua Avaliação Agora</a>
+            <div class="cta-final-footer">
+                ✓ Avaliação totalmente grátis • ✓ Sem compromisso • ✓ Resposta em até 2 horas
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Sheila Martins</h4>
+                    <p>Especialista em transformação física e bem-estar para mulheres 30+. Resultados reais, acolhimento genuíno.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <p>
+                        <a href="https://wa.me/32988372723">WhatsApp: (32) 98837-2723</a><br>
+                        <a href="https://instagram.com/sheilamartinspersonal">Instagram: @sheilamartinspersonal</a><br>
+                        Juiz de Fora, Minas Gerais, Brasil
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <p>
+                        Consultoria Online<br>
+                        Treino Personalizado<br>
+                        Orientação Nutricional<br>
+                        Acompanhamento Contínuo
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Sheila Martins. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

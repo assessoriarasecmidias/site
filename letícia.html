@@ -70,11 +70,10 @@
 
         /* HERO */
         .hero {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             align-items: center;
-            gap: 60px;
+            justify-content: center;
+            min-height: 100vh;
             padding: 80px 0;
             background: linear-gradient(135deg, #0a7e6e 0%, #1a9e7e 50%, #0f5a4e 100%);
             position: relative;
@@ -119,9 +118,14 @@
             100% { height: 0; }
         }
 
-        .hero > .container:first-child {
+        .hero > .container {
             position: relative;
             z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
         }
 
         .hero-content h1 {
@@ -153,10 +157,15 @@
             opacity: 0;
             animation: fadeInScale 0.8s ease 0.3s forwards;
             z-index: 10;
+            max-width: 100%;
+            width: 100%;
         }
 
         .hero-image img {
             width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
             border-radius: 20px;
             box-shadow: 0 24px 48px rgba(10, 126, 110, 0.2);
         }
@@ -660,56 +669,354 @@
             gap: 8px;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.25rem; }
-            h2 { font-size: 1.5rem; }
-
-            .hero {
+        /* RESPONSIVE - MOBILE FIRST OPTIMIZATION */
+        @media (max-width: 1024px) {
+            .hero > .container {
                 grid-template-columns: 1fr;
                 padding: 60px 0;
                 gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* TYPOGRAPHY SCALE FOR MOBILE */
+            h1 { 
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+                margin-bottom: 16px;
+            }
+            
+            h2 { 
+                font-size: 1.75rem;
+                margin-bottom: 20px;
+            }
+            
+            h3 {
+                font-size: 1.1rem;
+            }
+            
+            p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            /* CONTAINER PADDING */
+            .container {
+                padding: 0 20px;
+            }
+
+            /* HERO OPTIMIZATION */
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px 0 60px;
+                gap: 32px;
+                min-height: auto;
+            }
+
+            .rhythm-pulse {
+                height: 120px;
+                top: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+                line-height: 1.1;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 24px;
             }
 
             .hero-cta {
                 flex-direction: column;
+                gap: 12px;
             }
 
+            .btn-cta, .btn-secondary {
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 0.95rem;
+            }
+
+            .hero-image img {
+                border-radius: 16px;
+                max-height: 400px;
+                object-fit: cover;
+            }
+
+            /* HIDE BADGE ON SMALL MOBILE */
+            @media (max-width: 480px) {
+                .hero-badge {
+                    display: none;
+                }
+            }
+
+            /* SECTIONS PADDING */
             .problem, .benefits, .proof, .about, .location, .cta-final {
-                padding: 60px 0;
+                padding: 48px 0;
+            }
+
+            .problem-content {
+                max-width: 100%;
+            }
+
+            .problem h2 {
+                margin-bottom: 24px;
+            }
+
+            /* BENEFITS GRID */
+            .benefits-header {
+                margin-bottom: 48px;
+            }
+
+            .benefits-header h2 {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
             }
 
             .benefits-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .benefit-card {
+                padding: 24px;
+                text-align: left;
+            }
+
+            .benefit-icon {
+                font-size: 2rem;
+                margin-bottom: 16px;
+            }
+
+            .benefit-card h3 {
+                font-size: 1rem;
+                margin-bottom: 12px;
+            }
+
+            .benefit-card p {
+                font-size: 0.9rem;
+            }
+
+            /* PROOF STATS */
+            .proof-header h2 {
+                font-size: 1.5rem;
             }
 
             .proof-stats {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+                margin-bottom: 48px;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
             }
 
             .testimonials {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
 
-            .about-content, .location-content {
+            .testimonial {
+                padding: 20px;
+                border-left-width: 3px;
+            }
+
+            .testimonial-text {
+                font-size: 0.9rem;
+                margin-bottom: 16px;
+            }
+
+            .testimonial-author {
+                font-size: 0.85rem;
+            }
+
+            /* ABOUT SECTION */
+            .about-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 32px;
+            }
+
+            .about-text h2 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .about-text p {
+                font-size: 0.95rem;
+                margin-bottom: 16px;
+            }
+
+            .highlights {
+                gap: 16px;
+                margin-top: 24px;
+            }
+
+            .highlight {
+                gap: 12px;
+            }
+
+            .highlight-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 0.9rem;
+            }
+
+            .highlight-title {
+                font-size: 0.95rem;
+                margin-bottom: 2px;
+            }
+
+            .highlight-desc {
+                font-size: 0.85rem;
             }
 
             .about-image {
                 order: -1;
             }
 
+            .about-image img {
+                border-radius: 12px;
+                max-height: 300px;
+                object-fit: cover;
+            }
+
+            /* LOCATION SECTION */
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .location-info h3 {
+                font-size: 1.4rem;
+                margin-bottom: 24px;
+            }
+
+            .location-map {
+                height: 300px;
+                padding-bottom: 0;
+                min-height: 300px;
+            }
+
+            .detail {
+                gap: 12px;
+            }
+
+            .detail-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .detail-label {
+                font-size: 0.75rem;
+                margin-bottom: 2px;
+            }
+
+            .detail-content {
+                font-size: 0.95rem;
+            }
+
+            .detail-secondary {
+                font-size: 0.85rem;
+            }
+
             .location-map {
                 order: -1;
             }
 
-            .cta-trust {
-                gap: 16px;
+            /* CTA FINAL */
+            .cta-final {
+                padding: 60px 0;
             }
 
             .cta-final h2 {
-                font-size: 2rem;
+                font-size: 1.75rem;
+                margin-bottom: 20px;
+            }
+
+            .cta-final p {
+                font-size: 0.95rem;
+                margin-bottom: 32px;
+            }
+
+            .cta-final-button {
+                width: 100%;
+                padding: 14px 20px;
+            }
+
+            .cta-trust {
+                flex-direction: column;
+                gap: 12px;
+                font-size: 0.85rem;
+            }
+
+            .trust-badge {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* EXTRA SMALL DEVICES */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 30px 0 40px;
+                gap: 24px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .hero-image img {
+                max-height: 300px;
+            }
+
+            .benefits-grid {
+                gap: 16px;
+            }
+
+            .benefit-card {
+                padding: 16px;
+            }
+
+            .benefit-icon {
+                font-size: 1.75rem;
+            }
+
+            .proof-stats {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .cta-final h2 {
+                font-size: 1.4rem;
             }
         }
 
@@ -727,7 +1034,15 @@
         <div class="rhythm-pulse">
             <div class="rhythm-pulse-inner"></div>
         </div>
-        <div class="container">
+        <div class="container" style="display: flex; flex-direction: column; gap: 0;">
+            <div class="hero-image" style="margin-bottom: 32px; order: -1;">
+                <img src="leticia-hero.jpg" alt="Letícia Carvalho">
+                <div class="hero-badge">
+                    <p>Classificação Google</p>
+                    <span style="color: #ffc107;">★★★★★</span>
+                    <p style="font-size: 0.75rem; margin-top: 4px; color: #6f6f6f;">39 avaliações</p>
+                </div>
+            </div>
             <div class="hero-content">
                 <h1>Nutrição que <span style="color: #ffc0cb;">acompanha seu ritmo</span></h1>
                 <p>Emagrecimento e hipertrofia pensados para quem vive de verdade. Estratégia, leveza e resultado.</p>
@@ -735,26 +1050,16 @@
                     <a href="https://wa.me/5532999859614?text=Olá%20Letícia!%20Gostaria%20de%20conhecer%20seus%20serviços" class="btn-cta">Agende uma consulta</a>
                     <button class="btn-secondary" onclick="document.querySelector('.proof').scrollIntoView({behavior: 'smooth'})">Ver resultados</button>
                 </div>
-                <div style="display: flex; gap: 32px; align-items: center;">
+                <div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
                     <div style="color: white;">
                         <div style="font-size: 1.5rem; font-weight: bold; margin-bottom: 4px;">★★★★★</div>
                         <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">39 avaliações</div>
                     </div>
-                    <div style="height: 48px; width: 1px; background: rgba(255,255,255,0.3);"></div>
+                    <div style="height: 48px; width: 1px; background: rgba(255,255,255,0.3); display: none;"></div>
                     <div style="color: white;">
                         <div style="font-size: 0.85rem; font-weight: 600;">CRN9 29395</div>
                         <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Nutricionista registrada</div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="container" style="grid-column: 2;">
-            <div class="hero-image">
-                <img src="leticia-hero.jpg" alt="Letícia Carvalho">
-                <div class="hero-badge">
-                    <p>Classificação Google</p>
-                    <span style="color: #ffc107;">★★★★★</span>
-                    <p style="font-size: 0.75rem; margin-top: 4px; color: #6f6f6f;">39 avaliações</p>
                 </div>
             </div>
         </div>

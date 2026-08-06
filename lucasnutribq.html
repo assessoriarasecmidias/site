@@ -34,14 +34,14 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);l
 section{position:relative;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);}
+nav{position:static;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.95);border-bottom:0.5px solid var(--border);}
 .nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--white);letter-spacing:0.05em;}
 .nav-logo span{color:var(--gold);}
 .nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);font-size:13px;font-weight:600;padding:10px 20px;border-radius:var(--radius);text-decoration:none;letter-spacing:0.03em;transition:background 0.2s;}
 .nav-cta:hover{background:var(--gold-light);}
 
 /* HERO */
-#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:80px;background:var(--black);overflow:hidden;position:relative;}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;background:var(--black);overflow:hidden;position:relative;}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.85) 70%,var(--black) 100%);z-index:1;}
 .hero-photo{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1400&q=80') center 20%/cover no-repeat;opacity:0.35;}
 .hero-content{position:relative;z-index:2;padding:0 24px 80px;max-width:var(--max);margin:0 auto;width:100%;}
@@ -125,79 +125,89 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 24px;display:fl
 .step-badge{display:inline-block;margin-top:20px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:4px 10px;border:0.5px solid var(--gold);border-radius:var(--radius);}
 
 /* ==============================
-   RESULTADOS — AUTOPLAY CURVED
+   RESULTADOS — STORIES GALLERY
    ============================== */
-#resultados{padding:120px 0;background:var(--black);overflow:hidden;}
-.resultados-header{max-width:var(--max);margin:0 auto 64px;padding:0 24px;}
-.carousel-scene{
+#resultados{padding:120px 24px;background:var(--black);}
+.resultados-header{max-width:var(--max);margin:0 auto 64px;}
+.stories-container{
+  max-width:var(--max);
+  margin:0 auto;
   position:relative;
-  width:100%;
-  padding:60px 0 80px;
   overflow:hidden;
+  width:100%;
 }
-/* fita infinita */
-.carousel-belt{
+.stories-track{
   display:flex;
-  gap:20px;
-  width:max-content;
-  animation:beltScroll 35s linear infinite;
-  will-change:transform;
+  gap:16px;
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
 }
-.carousel-belt:hover{animation-play-state:paused;}
-@keyframes beltScroll{
-  0%{transform:translateX(0);}
-  100%{transform:translateX(-50%);}
-}
-/* card com curvatura via perspective 3D */
-.rcard{
-  flex:0 0 280px;
+.stories-track::-webkit-scrollbar{display:none;}
+/* story card 9:16 portrait */
+.story-card{
+  flex:0 0 140px;
+  aspect-ratio:9/16;
   background:var(--card);
   border-radius:12px;
-  border:0.5px solid rgba(212,175,55,0.15);
   overflow:hidden;
-  transform-origin:center bottom;
-  transition:transform 0.3s,border-color 0.3s;
-  /* leve inclinação individual alternada via nth */
+  cursor:grab;
   position:relative;
+  border:0.5px solid rgba(212,175,55,0.15);
+  transition:border-color 0.2s;
+  scroll-snap-align:center;
+  user-select:none;
 }
-.rcard:nth-child(odd){transform:rotate(-2deg) translateY(0px);}
-.rcard:nth-child(even){transform:rotate(2deg) translateY(10px);}
-.rcard:hover{
-  transform:rotate(0deg) translateY(-8px) scale(1.03) !important;
-  border-color:var(--gold);
-  z-index:10;
-}
-.rcard-img{
-  width:100%;height:180px;
+.story-card:active{cursor:grabbing;}
+.story-card:hover{border-color:var(--gold);}
+.story-img{
+  width:100%;
+  height:60%;
   background:#1a1a1a;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
+  object-fit:cover;
+  display:block;
 }
-.rcard-body{padding:20px;}
-.rcard-tag{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
-.rcard-name{font-size:15px;font-weight:600;color:var(--white);margin-bottom:14px;}
-.rcard-metrics{display:flex;flex-direction:column;gap:6px;}
-.rm-row{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:var(--card2);border-radius:3px;}
-.rm-label{font-size:11px;color:var(--gray);}
-.rm-val{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold);font-weight:700;}
-.rcard-quote{margin-top:14px;font-size:12px;color:var(--gray-light);line-height:1.6;font-style:italic;padding-top:14px;border-top:0.5px solid var(--border);}
-/* fade lateral */
-.carousel-scene::before,.carousel-scene::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:5;pointer-events:none;}
-.carousel-scene::before{left:0;background:linear-gradient(90deg,var(--black),transparent);}
-.carousel-scene::after{right:0;background:linear-gradient(270deg,var(--black),transparent);}
-.gallery-hint{text-align:center;font-size:13px;color:var(--gray);margin-top:0;padding:0 24px;}
-.gallery-hint span{color:var(--gold);}
+.story-body{
+  height:40%;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.story-name{
+  font-size:13px;
+  font-weight:600;
+  color:var(--white);
+  line-height:1.2;
+}
+.story-result{
+  font-family:'Playfair Display',serif;
+  font-size:18px;
+  color:var(--gold);
+  font-weight:700;
+  line-height:1;
+}
+.story-period{
+  font-size:11px;
+  color:var(--gray);
+  margin-top:4px;
+}
+
 
 /* DEPOIMENTOS */
 #depoimentos{padding:120px 24px;background:var(--surface);border-top:0.5px solid var(--border);}
 .dep-header{max-width:var(--max);margin:0 auto 64px;}
-.dep-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.dep-card{background:var(--card);padding:36px;border-radius:var(--radius);border:0.5px solid rgba(255,255,255,0.06);transition:border-color 0.2s;}
+.dep-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;row-gap:32px;align-items:start;}
+.dep-card{background:var(--card);padding:36px;border-radius:var(--radius);border:0.5px solid rgba(255,255,255,0.06);transition:border-color 0.2s;display:flex;flex-direction:column;min-height:360px;}
 .dep-card:hover{border-color:var(--border);}
 .dep-card.featured{background:var(--card2);border-color:var(--gold);}
 .dep-stars{color:var(--gold);font-size:14px;letter-spacing:3px;margin-bottom:20px;}
-.dep-quote{font-size:15px;color:var(--gray-light);line-height:1.7;margin-bottom:24px;font-style:italic;}
-.dep-author{display:flex;align-items:center;gap:12px;}
+.dep-quote{font-size:15px;color:var(--gray-light);line-height:1.7;margin-bottom:24px;font-style:italic;flex:1;}
+.dep-author{display:flex;align-items:center;gap:12px;margin-top:auto;}
 .dep-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--gold);flex-shrink:0;}
 .dep-name{font-size:14px;font-weight:600;color:var(--white);}
 .dep-role{font-size:12px;color:var(--gray);}
@@ -273,11 +283,11 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
   .solucao-side{padding-left:0;}
   .steps-grid{grid-template-columns:1fr;}
   .step-card:not(:last-child)::after{display:none;}
-  .dep-grid{grid-template-columns:1fr;}
+  .dep-grid{grid-template-columns:1fr;gap:32px;}
   .lucas-stats{grid-template-columns:1fr 1fr;}
+  .story-card{flex:0 0 120px;}
 }
 @media (max-width:768px){
-  nav{padding:14px 16px;}
   .nav-logo{font-size:16px;}
   .nav-cta{font-size:12px;padding:8px 14px;}
   .hero-h1{font-size:40px;}
@@ -288,13 +298,15 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
   .trust-divider{display:none;}
   .trust-num{font-size:22px;}
   #lucas,#problema,#processo,#resultados,#depoimentos,#faq,#localizacao,#cta-final{padding:80px 20px;}
-  #resultados{padding:80px 0;}
-  .resultados-header{padding:0 20px;margin-bottom:48px;}
-  .rcard{flex:0 0 240px;}
+  .resultados-header{margin-bottom:32px;}
+  .story-card{flex:0 0 100px;}
+  .story-result{font-size:14px;}
+  .story-name{font-size:12px;}
   .section-title{font-size:clamp(28px,6vw,48px);}
   .section-sub{font-size:15px;}
   .quote-block{font-size:18px;padding:24px;}
-  .dep-grid{grid-template-columns:1fr;}
+  .dep-grid{grid-template-columns:1fr;gap:16px;row-gap:20px;}
+  .dep-card{min-height:340px;}
   .cta-options{flex-direction:column;align-items:stretch;}
   .btn-option{max-width:100%;}
   .float-cta{left:16px;right:16px;bottom:16px;justify-content:center;border-radius:12px;padding:14px 20px;}
@@ -314,9 +326,10 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
   .lucas-stats{grid-template-columns:1fr;}
   .step-card{padding:32px 24px;}
   .step-num{font-size:56px;}
-  .rcard{flex:0 0 220px;}
+  .story-card{flex:0 0 90px;}
+  .story-name{font-size:11px;}
+  .story-result{font-size:12px;}
   .faq-question{font-size:15px;}
-  nav{padding:12px 16px;}
 }
 </style>
 </head>
@@ -391,60 +404,6 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
     <div class="trust-item">
       <div class="trust-num">7.9k</div>
       <div class="trust-label">Seguidores<br>no Instagram</div>
-    </div>
-  </div>
-</section>
-
-<!-- QUEM É O LUCAS -->
-<section id="lucas">
-  <div class="lucas-grid">
-    <div class="lucas-photo-wrap fade-up">
-      <div class="lucas-photo">
-        <div class="lucas-photo-fallback">LO</div>
-      </div>
-      <div class="lucas-badge">
-        <div class="badge-crn">CRN9 27531</div>
-        <div class="badge-name">Lucas Oliveira</div>
-        <div class="badge-title">Nutricionista Clínico e Esportivo · Barbacena-MG</div>
-      </div>
-    </div>
-    <div class="lucas-content">
-      <div class="section-label">Quem é o Lucas</div>
-      <h2 class="section-title display">
-        A ciência a serviço<br>
-        <em class="gold">da sua transformação</em>
-      </h2>
-      <p class="lucas-bio fade-up">
-        Lucas Oliveira é nutricionista <strong>pós-graduado em Nutrição Clínica e Esportiva</strong>, registrado no CRN9 sob o número 27531. Atua em Barbacena-MG com atendimentos presenciais e online para todo o Brasil.
-      </p>
-      <p class="lucas-bio fade-up">
-        Sua abordagem une <strong>ciência e humanização</strong>: antes de prescrever qualquer plano, ele entende a rotina real do paciente — trabalho, treino, preferências alimentares e dificuldades específicas. O resultado é um plano que você consegue seguir de verdade.
-      </p>
-      <div class="lucas-stats fade-up">
-        <div class="lucas-stat">
-          <div class="stat-num">5.0★</div>
-          <div class="stat-label">Avaliação no Google — 100% de 5 estrelas</div>
-        </div>
-        <div class="lucas-stat">
-          <div class="stat-num">7.9k</div>
-          <div class="stat-label">Seguidores no Instagram com conteúdo educativo</div>
-        </div>
-        <div class="lucas-stat">
-          <div class="stat-num">2</div>
-          <div class="stat-label">Especialidades: Nutrição Clínica + Esportiva</div>
-        </div>
-        <div class="lucas-stat">
-          <div class="stat-num">48h</div>
-          <div class="stat-label">Entrega do plano personalizado após consulta</div>
-        </div>
-      </div>
-      <div class="section-label fade-up">Formação</div>
-      <div class="lucas-formacao fade-up">
-        <div class="formacao-item"><div class="dot"></div><span>Graduação em Nutrição</span></div>
-        <div class="formacao-item"><div class="dot"></div><span>Pós-graduação em Nutrição Clínica</span></div>
-        <div class="formacao-item"><div class="dot"></div><span>Pós-graduação em Nutrição Esportiva</span></div>
-        <div class="formacao-item"><div class="dot"></div><span>Registro ativo CRN9 27531</span></div>
-      </div>
     </div>
   </div>
 </section>
@@ -532,7 +491,7 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
   </div>
 </section>
 
-<!-- RESULTADOS — AUTOPLAY CURVO -->
+<!-- RESULTADOS — STORIES GALLERY -->
 <section id="resultados">
   <div class="resultados-header">
     <div class="section-label">Resultados reais</div>
@@ -540,174 +499,13 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
       Transformações documentadas,<br>
       <em class="gold">não promessas vazias</em>
     </h2>
-    <p class="section-sub">Casos reais de clientes que seguiram o processo. Números reais, sem filtro.</p>
+    <p class="section-sub">Casos reais de clientes que seguiram o processo. Arraste para ver o próximo.</p>
   </div>
 
-  <div class="carousel-scene">
-    <div class="carousel-belt" id="carouselBelt">
-      <!-- SET 1 -->
-      <div class="rcard">
-        <div class="rcard-img" style="background:#1a1212;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Emagrecimento</span>
-          <div class="rcard-name">Paciente A · Retorno 30 dias</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−2,3 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Abdômen</span><span class="rm-val">−2,5 cm</span></div>
-            <div class="rm-row"><span class="rm-label">Cintura</span><span class="rm-val">−3 cm</span></div>
-            <div class="rm-row"><span class="rm-label">Quadril</span><span class="rm-val">−1,5 cm</span></div>
-          </div>
-          <div class="rcard-quote">"Excelente profissional, atencioso. Deixa o processo de emagrecimento mais fácil e natural."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#0a1218;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Recomposição</span>
-          <div class="rcard-name">Paciente B · Musculação + Dieta</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Gordura corporal</span><span class="rm-val">−4,2%</span></div>
-            <div class="rm-row"><span class="rm-label">Massa magra</span><span class="rm-val">+1,8 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Peso total</span><span class="rm-val">−1,1 kg</span></div>
-          </div>
-          <div class="rcard-quote">"Muito atencioso. Encaixou tudo na minha rotina de treinos sem sofrimento."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#121a10;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Emagrecimento</span>
-          <div class="rcard-name">Paciente C · Retorno 45 dias</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−3,7 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Cintura</span><span class="rm-val">−4,1 cm</span></div>
-            <div class="rm-row"><span class="rm-label">% Gordura</span><span class="rm-val">−3,5%</span></div>
-          </div>
-          <div class="rcard-quote">"Sem sofrimento, sem passar fome. Nunca achei que fosse conseguir comer tão bem e emagrecer."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#181210;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Performance</span>
-          <div class="rcard-name">Paciente D · Atleta Amateur</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−5,2 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Massa magra</span><span class="rm-val">+2,3 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Período</span><span class="rm-val">60 dias</span></div>
-          </div>
-          <div class="rcard-quote">"Minha performance no treino melhorou muito. O Lucas entende de nutrição esportiva de verdade."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#101820;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Estilo de vida</span>
-          <div class="rcard-name">Paciente E · Transição saudável</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−6,0 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Colesterol</span><span class="rm-val">Normalizado</span></div>
-            <div class="rm-row"><span class="rm-label">Período</span><span class="rm-val">90 dias</span></div>
-          </div>
-          <div class="rcard-quote">"Mudei minha relação com a comida. Não é uma dieta, é um novo estilo de vida que consigo manter."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#1a1518;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Emagrecimento</span>
-          <div class="rcard-name">Paciente F · Retorno 60 dias</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−4,5 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Abdômen</span><span class="rm-val">−3,8 cm</span></div>
-            <div class="rm-row"><span class="rm-label">Quadril</span><span class="rm-val">−2,5 cm</span></div>
-          </div>
-          <div class="rcard-quote">"Resultado além do que eu esperava. E o mais importante: sem deixar de comer o que gosto."</div>
-        </div>
-      </div>
-      <!-- SET 2 — clone para loop infinito -->
-      <div class="rcard">
-        <div class="rcard-img" style="background:#1a1212;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Emagrecimento</span>
-          <div class="rcard-name">Paciente A · Retorno 30 dias</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−2,3 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Abdômen</span><span class="rm-val">−2,5 cm</span></div>
-            <div class="rm-row"><span class="rm-label">Cintura</span><span class="rm-val">−3 cm</span></div>
-            <div class="rm-row"><span class="rm-label">Quadril</span><span class="rm-val">−1,5 cm</span></div>
-          </div>
-          <div class="rcard-quote">"Excelente profissional, atencioso. Deixa o processo de emagrecimento mais fácil e natural."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#0a1218;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Recomposição</span>
-          <div class="rcard-name">Paciente B · Musculação + Dieta</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Gordura corporal</span><span class="rm-val">−4,2%</span></div>
-            <div class="rm-row"><span class="rm-label">Massa magra</span><span class="rm-val">+1,8 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Peso total</span><span class="rm-val">−1,1 kg</span></div>
-          </div>
-          <div class="rcard-quote">"Muito atencioso. Encaixou tudo na minha rotina de treinos sem sofrimento."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#121a10;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Emagrecimento</span>
-          <div class="rcard-name">Paciente C · Retorno 45 dias</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−3,7 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Cintura</span><span class="rm-val">−4,1 cm</span></div>
-            <div class="rm-row"><span class="rm-label">% Gordura</span><span class="rm-val">−3,5%</span></div>
-          </div>
-          <div class="rcard-quote">"Sem sofrimento, sem passar fome. Nunca achei que fosse conseguir comer tão bem e emagrecer."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#181210;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Performance</span>
-          <div class="rcard-name">Paciente D · Atleta Amateur</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−5,2 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Massa magra</span><span class="rm-val">+2,3 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Período</span><span class="rm-val">60 dias</span></div>
-          </div>
-          <div class="rcard-quote">"Minha performance no treino melhorou muito. O Lucas entende de nutrição esportiva de verdade."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#101820;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Estilo de vida</span>
-          <div class="rcard-name">Paciente E · Transição saudável</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−6,0 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Colesterol</span><span class="rm-val">Normalizado</span></div>
-            <div class="rm-row"><span class="rm-label">Período</span><span class="rm-val">90 dias</span></div>
-          </div>
-          <div class="rcard-quote">"Mudei minha relação com a comida. Não é uma dieta, é um novo estilo de vida que consigo manter."</div>
-        </div>
-      </div>
-      <div class="rcard">
-        <div class="rcard-img" style="background:#1a1518;"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3"><circle cx="24" cy="16" r="10" fill="#888"/><ellipse cx="24" cy="38" rx="16" ry="12" fill="#666"/></svg></div>
-        <div class="rcard-body">
-          <span class="rcard-tag">Caso documentado — Emagrecimento</span>
-          <div class="rcard-name">Paciente F · Retorno 60 dias</div>
-          <div class="rcard-metrics">
-            <div class="rm-row"><span class="rm-label">Peso perdido</span><span class="rm-val">−4,5 kg</span></div>
-            <div class="rm-row"><span class="rm-label">Abdômen</span><span class="rm-val">−3,8 cm</span></div>
-            <div class="rm-row"><span class="rm-label">Quadril</span><span class="rm-val">−2,5 cm</span></div>
-          </div>
-          <div class="rcard-quote">"Resultado além do que eu esperava. E o mais importante: sem deixar de comer o que gosto."</div>
-        </div>
-      </div>
+  <div class="stories-container">
+    <div class="stories-track" id="storiesTrack">
     </div>
   </div>
-  <p class="gallery-hint">Passe o mouse para pausar <span>· Resultados individuais podem variar</span></p>
 </section>
 
 <!-- DEPOIMENTOS -->
@@ -741,6 +539,60 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
       <div class="dep-author">
         <div class="dep-avatar">EO</div>
         <div><div class="dep-name">Eduarda Oliveira</div><div class="dep-role">Google — 5 estrelas</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM É O LUCAS -->
+<section id="lucas">
+  <div class="lucas-grid">
+    <div class="lucas-photo-wrap fade-up">
+      <div class="lucas-photo">
+        <div class="lucas-photo-fallback">LO</div>
+      </div>
+      <div class="lucas-badge">
+        <div class="badge-crn">CRN9 27531</div>
+        <div class="badge-name">Lucas Oliveira</div>
+        <div class="badge-title">Nutricionista Clínico e Esportivo · Barbacena-MG</div>
+      </div>
+    </div>
+    <div class="lucas-content">
+      <div class="section-label">Quem é o Lucas</div>
+      <h2 class="section-title display">
+        A ciência a serviço<br>
+        <em class="gold">da sua transformação</em>
+      </h2>
+      <p class="lucas-bio fade-up">
+        Lucas Oliveira é nutricionista <strong>pós-graduado em Nutrição Clínica e Esportiva</strong>, registrado no CRN9 sob o número 27531. Atua em Barbacena-MG com atendimentos presenciais e online para todo o Brasil.
+      </p>
+      <p class="lucas-bio fade-up">
+        Sua abordagem une <strong>ciência e humanização</strong>: antes de prescrever qualquer plano, ele entende a rotina real do paciente — trabalho, treino, preferências alimentares e dificuldades específicas. O resultado é um plano que você consegue seguir de verdade.
+      </p>
+      <div class="lucas-stats fade-up">
+        <div class="lucas-stat">
+          <div class="stat-num">5.0★</div>
+          <div class="stat-label">Avaliação no Google — 100% de 5 estrelas</div>
+        </div>
+        <div class="lucas-stat">
+          <div class="stat-num">7.9k</div>
+          <div class="stat-label">Seguidores no Instagram com conteúdo educativo</div>
+        </div>
+        <div class="lucas-stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Especialidades: Nutrição Clínica + Esportiva</div>
+        </div>
+        <div class="lucas-stat">
+          <div class="stat-num">48h</div>
+          <div class="stat-label">Entrega do plano personalizado após consulta</div>
+        </div>
+      </div>
+      <div class="section-label fade-up">Formação</div>
+      <div class="lucas-formacao fade-up">
+        <div class="formacao-item"><div class="dot"></div><span>Graduação em Nutrição</span></div>
+        <div class="formacao-item"><div class="dot"></div><span>Pós-graduação em Nutrição Clínica</span></div>
+        <div class="formacao-item"><div class="dot"></div><span>Pós-graduação em Nutrição Esportiva</span></div>
+        <div class="formacao-item"><div class="dot"></div><span>Registro ativo CRN9 27531</span></div>
       </div>
     </div>
   </div>
@@ -802,10 +654,10 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
           </div>
         </div>
         <div class="loc-detail">
-          <div class="loc-icon">📞</div>
+          <div class="loc-icon">💬</div>
           <div class="loc-text">
-            <strong>Telefone / WhatsApp</strong>
-            <span><a href="tel:+5532998445085" style="color:var(--gold);text-decoration:none;">(32) 99844-5085</a></span>
+            <strong>WhatsApp</strong>
+            <span><a href="https://api.whatsapp.com/send?phone=5532998445085&text=Olá,+gostaria+de+saber+mais+sobre+o+atendimento" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;">Enviar mensagem →</a></span>
           </div>
         </div>
         <div class="loc-detail">
@@ -879,10 +731,7 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
       </a>
     </div>
     <div class="cta-guarantee">🔒 Atendimento exclusivo via WhatsApp · Resposta rápida</div>
-    <div class="cta-contact">
-      Prefere ligar? <a href="tel:+5532998445085">(32) 99844-5085</a><br>
-      Seg a Sáb das 06h às 19h
-    </div>
+
   </div>
 </section>
 
@@ -892,8 +741,7 @@ footer{padding:40px 24px;background:var(--surface);border-top:0.5px solid var(--
   <div class="footer-info">
     Nutricionista · <span class="footer-crn">CRN9 27531</span><br>
     Pós-graduado em Nutrição Clínica e Esportiva<br>
-    R. Gen. Antônio Carlos de Andrada Serpa, Barbacena-MG<br>
-    <a href="tel:+5532998445085" style="color:var(--gray);text-decoration:none;">(32) 99844-5085</a>
+    R. Gen. Antônio Carlos de Andrada Serpa, Barbacena-MG
   </div>
 </footer>
 
@@ -921,16 +769,116 @@ document.querySelectorAll('.faq-question').forEach(q => {
   });
 });
 
-/* NAV SCROLL */
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  nav.style.background = window.scrollY > 60 ? 'rgba(0,0,0,0.97)' : 'rgba(0,0,0,0.85)';
-}, { passive: true });
 
-/* CAROUSEL — pausa em touch mobile também */
-const belt = document.getElementById('carouselBelt');
-belt.addEventListener('touchstart', () => { belt.style.animationPlayState = 'paused'; }, { passive: true });
-belt.addEventListener('touchend', () => { belt.style.animationPlayState = 'running'; }, { passive: true });
+
+/* STORIES GALLERY — DRAG TO SCROLL */
+const initStoriesGallery = () => {
+  const track = document.getElementById('storiesTrack');
+  if (!track) {
+    console.error('Stories track not found');
+    return;
+  }
+
+  const storiesData = [
+    { name: 'Marina', result: '−2,3 kg', period: '30 dias' },
+    { name: 'Lucas B.', result: '−4,2%', period: 'Gordura' },
+    { name: 'Carlos', result: '−3,7 kg', period: '45 dias' },
+    { name: 'Ana', result: '−5,2 kg', period: '60 dias' },
+    { name: 'Eduarda', result: '−6,0 kg', period: '90 dias' },
+    { name: 'Beatriz', result: '−4,5 kg', period: '60 dias' },
+    { name: 'Rafael', result: '−3,2 kg', period: '40 dias' },
+    { name: 'Sophia', result: '+2,8 kg', period: 'Massa' },
+    { name: 'Marcus', result: '−5,8 kg', period: '75 dias' },
+    { name: 'Julia', result: '−2,9 kg', period: '35 dias' }
+  ];
+
+  let isDown = false, startX = 0, scrollLeft = 0;
+
+  // Renderizar 10 cards
+  storiesData.forEach((story) => {
+    const card = document.createElement('div');
+    card.className = 'story-card fade-up';
+    card.innerHTML = `
+      <img class="story-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&q=80" alt="${story.name}">
+      <div class="story-body">
+        <div class="story-name">${story.name}</div>
+        <div>
+          <div class="story-result">${story.result}</div>
+          <div class="story-period">${story.period}</div>
+        </div>
+      </div>
+    `;
+    track.appendChild(card);
+  });
+
+  // Duplicar para loop infinito
+  storiesData.forEach((story) => {
+    const card = document.createElement('div');
+    card.className = 'story-card';
+    card.innerHTML = `
+      <img class="story-img" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&q=80" alt="${story.name}">
+      <div class="story-body">
+        <div class="story-name">${story.name}</div>
+        <div>
+          <div class="story-result">${story.result}</div>
+          <div class="story-period">${story.period}</div>
+        </div>
+      </div>
+    `;
+    track.appendChild(card);
+  });
+
+  // DRAG TO SCROLL — MOUSE
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    track.style.cursor = 'grabbing';
+  });
+
+  track.addEventListener('mouseleave', () => {
+    isDown = false;
+    track.style.cursor = 'grab';
+  });
+
+  track.addEventListener('mouseup', () => {
+    isDown = false;
+    track.style.cursor = 'grab';
+  });
+
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = x - startX;
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  // DRAG TO SCROLL — TOUCH
+  track.addEventListener('touchstart', (e) => {
+    isDown = true;
+    startX = e.touches[0].pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  }, { passive: true });
+
+  track.addEventListener('touchend', () => {
+    isDown = false;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    const x = e.touches[0].pageX - track.offsetLeft;
+    const walk = x - startX;
+    track.scrollLeft = scrollLeft - walk;
+  }, { passive: true });
+};
+
+// Aguardar DOM estar pronto
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initStoriesGallery);
+} else {
+  initStoriesGallery();
+}
 </script>
 </body>
 </html>
